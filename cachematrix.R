@@ -1,7 +1,24 @@
 # makeCacheMatrix creates a matrix object. If the matrix inverse has been calculated, 
 # it will get it from the cache, otherwise cacheSolve will calculate it.
 
-This function takes the values 
+# Sample use scenario:
+# > x = rbind(c(2, -1/2), c(-1/2, 1))
+# > m = makeCacheMatrix(x)
+# > m$get()
+# [,1] [,2]
+# [1,]  2.0 -0.5
+# [2,] -0.5  1.0
+# > cacheSolve(m)
+# [,1]      [,2]
+# [1,] 0.5714286 0.2857143
+# [2,] 0.2857143 1.1428571
+# > cacheSolve(m)
+# getting cached data.
+# [,1]      [,2]
+# [1,] 0.5714286 0.2857143
+# [2,] 0.2857143 1.1428571
+ 
+
 
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
@@ -31,3 +48,6 @@ cacheSolve <- function(x, ...) {
   x$setinverse(inv)
   inv
 }
+
+
+
